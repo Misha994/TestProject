@@ -13,6 +13,7 @@ public class TextureGeneration : MonoBehaviour
     [SerializeField] private Gradient colorGradient;
 
     private Dictionary<SizeShape, Texture2D> textureArray = new Dictionary<SizeShape, Texture2D>();
+    private float newCollorIndex = 0;
 
     public Texture2D GetTexture(SizeShape size)
     {
@@ -45,7 +46,7 @@ public class TextureGeneration : MonoBehaviour
 
                     if (x2 + y2 < r2)
                     {
-                        colors[x + y * resolutiones] = colorGradient.Evaluate(collorIndex);
+                        colors[x + y * resolutiones] = colorGradient.Evaluate(newCollorIndex);
                     }
                     else
                     {
@@ -63,12 +64,12 @@ public class TextureGeneration : MonoBehaviour
 
     public void ChangeTexture()
     {
-        collorIndex += 0.02f;
+        newCollorIndex += collorIndex;
         textureArray.Clear();
     }
 
     public void ResetColor()
     {
-        collorIndex = 0;
+        newCollorIndex = 0;
     }
 }

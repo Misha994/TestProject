@@ -27,6 +27,9 @@ public class UIManager : MonoBehaviour
     public delegate void StopMenu();
     public StopMenu stopMenu;
 
+    public delegate void ChackScore();
+    public ChackScore chackScore;
+
     private float elapsedTime;
     private int currentSpriteIndex = 0;
 
@@ -61,6 +64,7 @@ public class UIManager : MonoBehaviour
     public void IncriseScore(int shapeData)
     {
         score.text = (int.Parse(score.text) + shapeData).ToString();
+        chackScore?.Invoke();
     }
 
     public int GetScore()

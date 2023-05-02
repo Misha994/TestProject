@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private int point;
     [SerializeField] private int amountShapes;
     [SerializeField] private int nextScoreThreshold = 5;
-    [SerializeField] private float speed;
+    [SerializeField] private float increaseSpeed;
 
     [SerializeField] private UIManager uIManager;
     [SerializeField] private SpawnManager spawnManager;
@@ -20,6 +20,7 @@ public class LevelManager : MonoBehaviour
     {
         uIManager.startMenu += StartLevel;
         uIManager.stopMenu += ResetLevel;
+        uIManager.chackScore += IncreaseLevel;
         ScoreThreshold = nextScoreThreshold;
     }
 
@@ -31,13 +32,16 @@ public class LevelManager : MonoBehaviour
 
     public void IncreaseLevel()
     {
-        level++;
-        speed += 0.1f;
-        point++;
-        amountShapes++;
-        spawnManager.ChangeLevel(point, speed, amountShapes);
-        uIManager.ChangeBackground();
-        uIManager.ChangeLevelText(level);
+        if (uIManager.GetScore() > ScoreThreshold)
+        {
+            ScoreThreshold += nextScoreThreshold;
+            level++;
+            point++;
+            amountShapes++;
+            spawnManager.ChangeLevel(point, increaseSpeed, amountShapes);
+            uIManager.ChangeBackground();
+            uIManager.ChangeLevelText(level);
+        }
     }
 
     public void StartLevel()
@@ -50,22 +54,9 @@ public class LevelManager : MonoBehaviour
         spawnManager.DeleteAllShapes();
         spawnManager.StopSpawn();
         level = 1;
-        speed = 0;
         point = 0;
         amountShapes = 0;
         ScoreThreshold = nextScoreThreshold;
         uIManager.ResetLevel();
-        spawnManager.ChangeLevel(point, speed, amountShapes);
     }
-
-    private void Update()
-    {
-        if (uIManager.GetScore() > ScoreThreshold)
-        {
-            ScoreThreshold += nextScoreThreshold;
-            IncreaseLevel();
-
-        }
-    }
-
 }

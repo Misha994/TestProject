@@ -44,7 +44,10 @@ public class SpawnManager : MonoBehaviour
         {
             for (int i = 0; i < amountShapes; i++)
             {
-                SpawnShape(shapeData.ListShape[Random.Range(0, shapeData.ListShape.Count)]);
+                if (SizeShapes.Length == shapeData.ListShape.Count)
+                {
+                    SpawnShape(shapeData.ListShape[Random.Range(0, shapeData.ListShape.Count)]);
+                }
             }
 
             yield return new WaitForSeconds(spawnDelay);
@@ -84,7 +87,7 @@ public class SpawnManager : MonoBehaviour
         GameObject newCircle = objectPool.GetObject(shapeData.size);
         newCircle.transform.position = randomPosition;
 
-        newCircle.GetComponent<Shape>().SetData(shapeData.speed+newSpeed, shapeData.point+newPoint, shapeData.scaleShape, shapeData.size, newTexture);
+        newCircle.GetComponent<Shape>().SetData(shapeData.speed + newSpeed, shapeData.point + newPoint, shapeData.scaleShape, shapeData.size, newTexture);
 
         // Check if the circle is outside of the camera bounds and clamp it to the edges if necessary
         float clampX = Mathf.Clamp(newCircle.transform.position.x, -cameraWidth / 2f + circleRadius, cameraWidth / 2f - circleRadius);
@@ -103,7 +106,11 @@ public class SpawnManager : MonoBehaviour
     {
         objectPool.ClearAllObject();
         textureGeneration.ResetColor();
+        textureGeneration.ChangeTexture();
+        GenerationTexture();
         amountShapes = 1;
+        newSpeed = 0;
+        newPoint = 0;
     }
 
 }

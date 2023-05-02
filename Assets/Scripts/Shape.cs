@@ -6,7 +6,6 @@ public abstract class Shape : MonoBehaviour
 {
     public float speed;
     public int point;
-    public float scaleShape;
     public SizeShape size;
     public Texture2D texture;
     public ObjectPool objectPool;

@@ -1052,7 +1052,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 295, y: -49.700012}
+  m_AnchoredPosition: {x: 295, y: -49.69995}
   m_SizeDelta: {x: 522.8, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1075812079
@@ -1413,7 +1413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 0.5
-  collorIndex: 0
+  collorIndex: 0.2
   offset: {x: 0.5, y: 0.5}
   filterMode: 0
   textureWrapMode: 0
@@ -1627,7 +1627,7 @@ MonoBehaviour:
   point: 1
   amountShapes: 0
   nextScoreThreshold: 20
-  speed: 0.1
+  increaseSpeed: 0
   uIManager: {fileID: 221551132}
   spawnManager: {fileID: 2138137222}
 --- !u!4 &1498652641
@@ -1719,10 +1719,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76b6671e6f2520f478f1b2d54042b4b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraHeight: 0
   mainCamera: {fileID: 955740246}
   objectPool: {fileID: 597235233}
-  orthoCamera: {fileID: 955740246}
 --- !u!4 &1792188284
 Transform:
   m_ObjectHideFlags: 0
@@ -1959,7 +1957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7364dbd8c10dc7544a1c75287cc47142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDelay: 1
+  spawnDelay: 2
   cameraWidth: 0
   cameraHeight: 0
   orthoCamera: {fileID: 955740246}
